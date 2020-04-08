@@ -1,9 +1,9 @@
 node {
     def image = ""
     stage('Build image') {
-        image = docker.image('hackovid-dropplets-team/tickets-backend', 'tickets-backend')
+        image = docker.image("hackovid-dropplets-team/tickets-backend", "tickets-backend")
     }
     stage('Publish image') {
-        image.push('latest')
+        image.push("latest")
     }
 }
