@@ -25,7 +25,7 @@ SECRET_KEY = 'g9iq*81(if6*@b&yl(92(_&)^qa(lo4@px^6bygbrz$25)bfx='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tickets.lesquerra.cat', '127.0.0.1', 'localhost']
 
 APPEND_SLASH = False
 
