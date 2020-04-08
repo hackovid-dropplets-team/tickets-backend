@@ -12,20 +12,20 @@ pip install -r requirements.txt
 
 ````bash
 cd tickets-backend
-python manage.py makemigrations
-python manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
 ````
 
 ## Create superuser
 
 ````bash
 cd tickets-backend
-python manage.py createsuperusercrea
+python3 manage.py createsuperuser
 ````
 
 ## Serve
 
 ````bash
 cd tickets-backend
-python manage.py runserve
+python3 manage.py runserver
 ````
