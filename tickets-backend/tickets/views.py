@@ -1,16 +1,28 @@
 from rest_framework import viewsets
 
-from .serializers import TicketSerializer
-from .models import Ticket
+from . import serializers
+from . import models
+from django.contrib.auth.models import User
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
 
 
 class TicketsViewSet(viewsets.ModelViewSet):
-    queryset = Ticket.objects.all().order_by('name')
-    serializer_class = TicketSerializer
+    queryset = models.Ticket.objects.all().order_by('name')
+    serializer_class = serializers.TicketSerializer
+
+
+class VolunteeringViewSet(viewsets.ModelViewSet):
+    queryset = models.Volunteering.objects.all()
+    serializer_class = serializers.VolunteeringSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
 
 
 class HelloView(APIView):
