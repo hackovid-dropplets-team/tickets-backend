@@ -1,4 +1,4 @@
-from django.urls import include, path
+from django.urls import include, path, re_path
 from rest_framework import routers
 from . import views
 from rest_framework.authtoken.views import obtain_auth_token
@@ -12,7 +12,8 @@ router.register(r'users', views.UserViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('login/', obtain_auth_token, name='login'),
-    path('hello/', views.HelloView.as_view(), name='hello')
+    path('hello/', views.HelloView.as_view(), name='hello'),
+    re_path(r'^rest-auth/', include('rest_auth.urls')),
+    re_path(r'^rest-auth/registration/',
+            include('rest_auth.registration.urls')),
 ]
