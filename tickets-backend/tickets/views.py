@@ -1,4 +1,5 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.decorators import api_view
 
 from . import serializers
 from . import models
@@ -23,6 +24,21 @@ class VolunteeringViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
+
+
+@api_view(['POST'])
+def create_auth(request):
+    serialized = serializers.UserSerializer(data=request.data, context={'request': request})
+
+    if serialized.is_valid():
+        User.objects.create_user(
+            serialized.data['email'],
+            serialized.data['username'],
+            serialized.data['password']
+        )
+        return Response(serialized.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class HelloView(APIView):

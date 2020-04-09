@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.conf import settings
 from django.contrib.auth.models import User
+from rest_framework.fields import empty
+
 from .models import Ticket, Volunteering
 
 
