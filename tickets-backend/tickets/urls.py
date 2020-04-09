@@ -13,6 +13,8 @@ router.register(r'users', views.UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('register/', views.create_auth),
     path('login/', obtain_auth_token, name='login'),
     path('hello/', views.HelloView.as_view(), name='hello')
+
 ]
