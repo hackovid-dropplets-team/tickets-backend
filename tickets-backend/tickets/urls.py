@@ -10,10 +10,11 @@ router.register(r'users', views.UserViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
+
 urlpatterns = [
     path('', include(router.urls)),
-    path('hello/', views.HelloView.as_view(), name='hello'),
     re_path(r'^rest-auth/', include('rest_auth.urls')),
     re_path(r'^rest-auth/registration/',
             include('rest_auth.registration.urls')),
+    # path('<str:error>', views.HelloView.as_view()),
 ]
