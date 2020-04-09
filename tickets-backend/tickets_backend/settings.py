@@ -90,21 +90,14 @@ WSGI_APPLICATION = 'tickets_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.getenv('SQL_ENGINE', 'django.db.backends.postgresql'),
-#         'NAME': os.getenv('SQL_DATABASE', 'ticketsBackend'),
-#         'USER': os.getenv('SQL_USER', 'root'),
-#         'PASSWORD': os.getenv('SQL_PASSWORD', 'tickets1234'),
-#         'HOST': os.getenv('SQL_HOST', 'localhost'),
-#         'PORT': os.getenv('SQL_PORT', '3306'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.getenv('SQL_ENGINE', 'django.db.backends.postgresql'),
+        'NAME': os.getenv('SQL_DATABASE', 'ticketsBackend'),
+        'USER': os.getenv('SQL_USER', 'root'),
+        'PASSWORD': os.getenv('SQL_PASSWORD', 'tickets1234'),
+        'HOST': os.getenv('SQL_HOST', 'localhost'),
+        'PORT': os.getenv('SQL_PORT', '3306'),
     }
 }
 
